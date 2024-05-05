@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+    </script>
+   
+</head>
+ 
+<body>
+    
+<div ng-app="myApp" ng-controller="MyController">
+    <h1 style="color:green">Controller Scope Use</h1>
+    <h3>Printing Data Using Controller and Scope</h3>
+    <input type="text" ng-model="name" name=""><br/>
+    <input type="text" ng-model="city" name="">
+    <br/>
+    <p ng-bind="name"></p>
+    <p ng-bind="city"></p>
+    <p> Details={{details()}}</p>
+    </div>
+
+    <div>
+        {{name}}
+    </div>
+</body>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('MyController', function ($scope) {
+        $scope.name="Ram";
+        $scope.city="Pune";
+        $scope.details = function(){
+            return $scope.name+" "+$scope.city;
+        }
+        });
+        
+    app.run(function($rootScope){
+        $rootScope.name="Good bye";
+    });
+</script>
+</html>
